@@ -87,7 +87,7 @@ public abstract class EntityMixin_Vanilla implements DataCompoundHolder {
     @Inject(method = "writeToNBT(Lnet/minecraft/nbt/NBTTagCompound;)Lnet/minecraft/nbt/NBTTagCompound;",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;writeEntityToNBT(Lnet/minecraft/nbt/NBTTagCompound;)V"))
     private void vanilla$preWriteToNBTInject(NBTTagCompound tagCompound, CallbackInfoReturnable<NBTTagCompound> ci) {
-        if (this.vanilla$customEntityData != null) {
+        if (this.vanilla$customEntityData != null && !this.vanilla$customEntityData.isEmpty()) {
             tagCompound.setTag(Constants.Forge.FORGE_DATA, this.vanilla$customEntityData);
         }
     }
